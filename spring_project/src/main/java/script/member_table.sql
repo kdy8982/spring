@@ -1,0 +1,5 @@
+CREATE TABLE member (
+	id VARCHAR(20) PRIMARY KEY, 
+	name VARCHAR(20) NOT NULL, 
+	joined DATE
+); 
