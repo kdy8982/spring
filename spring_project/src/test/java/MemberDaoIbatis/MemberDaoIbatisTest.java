@@ -1,5 +1,6 @@
 package MemberDaoIbatis;
 
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -28,10 +29,10 @@ public class MemberDaoIbatisTest {
 	
 	@Before
 	public void setUp() {
-		member1 = new Member("1", "김대연");
-		member2 = new Member("2", "김보민");
-		member3 = new Member("3", "송병욱");
-		member4 = new Member("4", "이진화");
+		member1 = new Member("1", "源����뿰");
+		member2 = new Member("2", "源�蹂대��");
+		member3 = new Member("3", "�넚蹂묒슧");
+		member4 = new Member("4", "�씠吏꾪솕");
 	}
 	
 	@Test
@@ -39,7 +40,6 @@ public class MemberDaoIbatisTest {
 		System.out.println(memberDao);
 		assertThat(memberDao , is(notNullValue()));
 	}
-	
 	
 	@Test
 	public void add() {
