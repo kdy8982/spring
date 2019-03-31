@@ -14,8 +14,8 @@
 	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util">
 
-	<!-- @Autowired를 이용하기위한 설정 -->
-	<context:annotation-config />
+	<!-- @Autowired를 이용하기위한 설정 (@Configuration을 사용하면서 더이상 사용하지 않음) -->
+	<!-- <context:annotation-config /> -->
 
 	<context:property-placeholder location="classpath*:*.properties" />
 	
@@ -27,17 +27,17 @@
 	</context:component-scan>
 
 	<!-- 내장형 DB ; HSQL -->
-	<jdbc:embedded-database id="dataSource" type="HSQL">
+<!-- 	<jdbc:embedded-database id="dataSource" type="HSQL">
 		<jdbc:script location="classpath:/script/member_table.sql"/>
-	</jdbc:embedded-database>
+	</jdbc:embedded-database> -->
 
-	<tx:annotation-driven />
+	<!-- <tx:annotation-driven /> -->
 	
 	<!-- iBatis ; 데이터소스 및 sql관련 Bean -->
-	<bean id="transactionManager"
+<!-- 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-		p:dataSource-ref="dataSource" />
-
+		p:dataSource-ref="dataSource" /> -->
+<!--
 	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
 		<constructor-arg name="sqlMapClient" ref="sqlMapClient" />
 	</bean>
@@ -46,7 +46,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/SqlMapConfig.xml" />
 	</bean>
-
+-->
 
 	<bean id="memberDao" class="com.sample.member.MemberDaoIbatis">
 		

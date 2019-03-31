@@ -28,4 +28,10 @@ public class MemberDaoIbatis implements MemberDao{
 		return (int) sqlMapClientTemplate.queryForObject("Member.getCount");
 	}
 
+	@Override
+	public void deleteAll() {
+		sqlMapClientTemplate.delete("Member.deleteAll");
+		
+	}
+
 }

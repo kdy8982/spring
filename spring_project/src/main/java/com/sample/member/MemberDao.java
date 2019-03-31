@@ -9,5 +9,7 @@ public interface MemberDao {
 	void add (Member member);
 	List<Member> list();
 	int getCount();
+	void deleteAll();
+	
 	
 }
