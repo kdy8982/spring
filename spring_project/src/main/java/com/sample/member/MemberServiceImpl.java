@@ -19,4 +19,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.list();
 	}
 
+	@Override
+	public void add(Member member) {
+		System.out.println("asdsadasd");
+		memberDao.add(member);		
+	}
+
 }
