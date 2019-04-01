@@ -5,6 +5,12 @@
 
 <sqlMap namespace="Member">
 	<typeAlias alias="Member" type="com.sample.domain.Member" />
+	
+	<resultMap id="member-list" class="com.sample.domain.Member">
+         <result property="id" column="id"/>
+         <result property="name" column="name"/>
+         <result property="joined" column="joined"/>
+    </resultMap>
 
 	<delete id="delete" parameterClass="string">
 		delete from member where id = #id#
@@ -26,7 +32,7 @@
 		select * from member where id = #id#
  	</select>
 
-	<select id="list" resultClass="java.util.List">
+	<select id="list" resultMap="member-list">
 		select * from member
  	</select>
  	

@@ -1,30 +1,30 @@
-package com.sample.applicationcontext;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URL;
+package com.sample.configcontext;
 
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.ibatis.SqlMapClientFactoryBean;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 @Configuration
+// @ComponentScan(basePackages="com", excludeFilters = @ComponentScan.Filter(type=FilterType.ANNOTATION, value=Controller.class),useDefaultFilters=true)
+@ComponentScan
 @ImportResource("classpath:applicationContext.xml")
-@EnableTransactionManagement
-public class TestApplicationContext {
+@EnableTransactionManagement //  <tx:annotation-driven />
+public class AppContext {
 	
 	@Bean
 	public DataSource embeddedDatabase() {
@@ -40,17 +40,8 @@ public class TestApplicationContext {
 		DataSourceTransactionManager tm = new DataSourceTransactionManager();
 		tm.setDataSource(embeddedDatabase());
 		return tm;
-		
 	}
 
-	@Bean
-	public SqlMapClientTemplate sqlMapClientTemplate() {
-		SqlMapClientTemplate sqlMapClientTemplate = new SqlMapClientTemplate();
-		sqlMapClientTemplate.setSqlMapClient((SqlMapClient) sqlMapClient());
-		return sqlMapClientTemplate;
-	}
-	
-	
 	@Bean 
 	public SqlMapClientFactoryBean sqlMapClient() {
 		SqlMapClientFactoryBean sqlMapClientFactoryBean = new SqlMapClientFactoryBean();
@@ -58,6 +49,14 @@ public class TestApplicationContext {
 		
 		sqlMapClientFactoryBean.setDataSource(embeddedDatabase());
 		sqlMapClientFactoryBean.setConfigLocation(pmrpr.getResource("classpath:/SqlMapConfig.xml"));
-		return ;
+		
+		return sqlMapClientFactoryBean;
+	}
+	
+	@Bean
+	public SqlMapClientTemplate sqlMapClientTemplate(SqlMapClient sqlMapClient) {
+		SqlMapClientTemplate sqlMapClientTemplate = new SqlMapClientTemplate();
+		sqlMapClientTemplate.setSqlMapClient(sqlMapClient);
+		return sqlMapClientTemplate;
 	}
 }

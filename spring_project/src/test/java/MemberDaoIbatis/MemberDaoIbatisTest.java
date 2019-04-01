@@ -6,6 +6,8 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,12 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.sample.applicationcontext.TestApplicationContext;
+import com.sample.configcontext.AppContext;
+import com.sample.configcontext.SqlServiceContext;
 import com.sample.domain.Member;
 import com.sample.member.MemberDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=TestApplicationContext.class)
+@ContextConfiguration(classes=AppContext.class)
 public class MemberDaoIbatisTest {
 
 	@Autowired MemberDao memberDao;
@@ -26,7 +29,6 @@ public class MemberDaoIbatisTest {
 	Member member1; 
 	Member member2;
 	Member member3;
-	
 	@Before
 	public void setUp() {
 		member1 = new Member("1", "김대연");
@@ -42,6 +44,8 @@ public class MemberDaoIbatisTest {
 	
 	@Test
 	public void add() {
+		memberDao.deleteAll();
+
 		memberDao.add(member1);
 		memberDao.add(member2);
 		memberDao.add(member3);
@@ -52,6 +56,8 @@ public class MemberDaoIbatisTest {
 	
 	@Test
 	public void deleteAll() {
+		memberDao.deleteAll();
+
 		memberDao.add(member1);
 		memberDao.add(member2);
 		memberDao.add(member3);
@@ -70,7 +76,11 @@ public class MemberDaoIbatisTest {
 		memberDao.add(member2);
 		memberDao.add(member3);
 		assertThat(memberDao.list().size(), is(3));
-		
+		System.out.println("!!!!!!!!!!!!!!!!!!!!");
+		System.out.println(memberDao.list().get(1).getName());
+//		assertThat(memberDao.list().get(1).getName(),is("김대연"));
+//		assertThat(memberDao.list().get(2).getName(),is("송병욱"));
+//		assertThat(memberDao.list().get(3).getName(),is("김보민"));
 	}
 	
 }

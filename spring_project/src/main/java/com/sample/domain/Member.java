@@ -8,6 +8,9 @@ public class Member {
 	String name;
 	Date joined;
 	
+	public Member() {
+	}
+	
 	public Member(String id, String name) {
 		this.id = id;
 		this.name = name;

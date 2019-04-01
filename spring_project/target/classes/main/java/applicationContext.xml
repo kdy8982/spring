@@ -25,33 +25,39 @@
 		<context:exclude-filter expression="org.springframework.stereotype.Controller"
 			type="annotation" />
 	</context:component-scan>
-
+	 
 	<!-- 내장형 DB ; HSQL -->
-<!-- 	<jdbc:embedded-database id="dataSource" type="HSQL">
+	<!-- 	
+	<jdbc:embedded-database id="dataSource" type="HSQL">
 		<jdbc:script location="classpath:/script/member_table.sql"/>
-	</jdbc:embedded-database> -->
+	</jdbc:embedded-database> 
+	-->
 
 	<!-- <tx:annotation-driven /> -->
 	
 	<!-- iBatis ; 데이터소스 및 sql관련 Bean -->
-<!-- 	<bean id="transactionManager"
+	<!-- 	
+	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-		p:dataSource-ref="dataSource" /> -->
-<!--
-	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
-		<constructor-arg name="sqlMapClient" ref="sqlMapClient" />
-	</bean>
-	
+		p:dataSource-ref="dataSource" /> 
+		-->
+		
+	<!-- 	
 	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/SqlMapConfig.xml" />
 	</bean>
--->
-
-	<bean id="memberDao" class="com.sample.member.MemberDaoIbatis">
 		
-	</bean>
+	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<constructor-arg name="sqlMapClient" ref="sqlMapClient" />
+	</bean> 
+	-->
+	
 
+	<!-- 
+	<bean id="memberDao" class="com.sample.member.MemberDaoIbatis" />
+ 	-->
+ 	
 	<!-- Hibernate 	
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
@@ -70,5 +76,6 @@
 		</property>
 	</bean>
 	-->
+	
 
 </beans>
