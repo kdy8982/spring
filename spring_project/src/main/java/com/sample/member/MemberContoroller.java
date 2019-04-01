@@ -19,6 +19,10 @@ public class MemberContoroller {
 		return "list";
 	}
 	
-	
+	@RequestMapping("/form")
+	public String form(Model model) {
+		// model.addAttribute("memberList", memberService.list());
+		return "form";
+	}
 	
 }

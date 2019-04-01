@@ -13,8 +13,12 @@
 </head>
 <body>
 
+<a href="<c:url value='/member/form.dy'/>">회원가입</a> <br/>
+
 <c:forEach var="member" items="${memberList}">
-${member.name}
+회원 번호 : ${member.id} <br>
+회원 이름 : ${member.name} <br>
+가입일 : ${member.joined} <br><br>
 </c:forEach> 
 
 </body>
