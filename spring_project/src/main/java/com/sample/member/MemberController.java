@@ -23,7 +23,6 @@ public class MemberController {
 	
 	@RequestMapping("/list")
 	public String list(Model model) {
-		System.out.println("hello list");
 		model.addAttribute("memberList", memberService.list());
 		return "member/list";
 	}

@@ -7,9 +7,9 @@
 	<typeAlias alias="Member" type="com.sample.domain.Member" />
 	
 	<resultMap id="member-list" class="com.sample.domain.Member">
-         <result property="id" column="id"/>
-         <result property="name" column="name"/>
-         <result property="joined" column="joined"/>
+         <result property="id" column="memb_id"/>
+         <result property="name" column="memb_name"/>
+         <result property="joined" column="memb_joined"/>
     </resultMap>
 
 	<delete id="delete" parameterClass="string">

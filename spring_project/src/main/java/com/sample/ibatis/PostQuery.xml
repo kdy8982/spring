@@ -3,13 +3,15 @@
     PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
-<sqlMap namespace="Member">
-	<typeAlias alias="Member" type="com.sample.domain.Member" />
+<sqlMap namespace="Post">
+	<typeAlias alias="Post" type="com.sample.domain.Post" />
 	
-	<resultMap id="member-list" class="com.sample.domain.Member">
-         <result property="id" column="memb_id"/>
-         <result property="name" column="memb_name"/>
-         <result property="joined" column="memb_joined"/>
+	<resultMap id="post-list" class="com.sample.domain.Post">
+         <result property="postId" column="post_id"/>
+         <result property="postTitle" column="post_title"/>
+         <result property="postDatetime" column="post_datetime"/>
+         <result property="postContent" column="post_content"/>
+         <result property="memberId" column="memb_id"/>
     </resultMap>
 
 	<delete id="delete" parameterClass="string">
@@ -32,7 +34,7 @@
 		select * from member where id = #id#
  	</select>
 
-	<select id="list" resultMap="member-list">
+	<select id="list" resultMap="post-list">
 		select * from member
  	</select>
  	

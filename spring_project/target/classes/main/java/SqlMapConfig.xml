@@ -6,4 +6,5 @@
 <sqlMapConfig>
 	<settings useStatementNamespaces="true" />
 	<sqlMap resource="com/sample/ibatis/MemberQuery.xml" />
+	<sqlMap resource="com/sample/ibatis/PostQuery.xml" />
 </sqlMapConfig>
