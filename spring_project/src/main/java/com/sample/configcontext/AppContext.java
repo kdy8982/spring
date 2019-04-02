@@ -31,6 +31,7 @@ public class AppContext {
 		return new EmbeddedDatabaseBuilder()
 				.setName("embeddedDatabase")
 				.addScript("classpath:/script/member_table.sql")
+				.addScript("classpath:/script/post_table.sql")
 				.setType(EmbeddedDatabaseType.HSQL)
 				.build();
 	}

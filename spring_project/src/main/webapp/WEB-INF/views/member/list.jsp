@@ -12,6 +12,7 @@
 <title>회원 목록</title>
 </head>
 <body>
+<jsp:include page="../common/header.jsp"></jsp:include>
 
 <a href="<c:url value='/member/form.dy'/>">회원가입</a> <br/>
 
@@ -20,7 +21,7 @@
 회원 이름 : ${member.name} <br>
 가입일 : ${member.joined} <br><br>
 </c:forEach> 
-
+<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
 

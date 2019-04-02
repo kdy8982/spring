@@ -25,13 +25,13 @@ public class MemberController {
 	public String list(Model model) {
 		System.out.println("hello list");
 		model.addAttribute("memberList", memberService.list());
-		return "list";
+		return "member/list";
 	}
 	
 	@RequestMapping("/form")
 	public String form(Model model) {
 		model.addAttribute("member", new Member());
-		return "form";
+		return "member/form";
 	}
 	
 	@RequestMapping("/post")
@@ -40,7 +40,7 @@ public class MemberController {
 		
 		if(result.hasErrors()) {
 			System.out.println("1111111");
-			return "form";
+			return "member/form";
 		}
 		System.out.println("2222222");
 		memberService.add(member);
