@@ -22,6 +22,7 @@ public class MemberDaoIbatis implements MemberDao{
 
 	@Override
 	public void add(Member member) {
+		member.setId((int)System.currentTimeMillis());
 		sqlMapClientTemplate.insert("Member.add", member);
 	}
 

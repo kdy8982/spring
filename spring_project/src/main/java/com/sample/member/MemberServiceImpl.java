@@ -1,5 +1,6 @@
 package com.sample.member;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void add(Member member) {
-		System.out.println("asdsadasd");
+		member.setJoined(new Date());
 		memberDao.add(member);		
 	}
 

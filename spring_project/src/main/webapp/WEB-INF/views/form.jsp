@@ -11,10 +11,11 @@
 <body>
 <a href="<c:url value='/member/list.dy'/>">가입한 회원 목록</a>
 
-<form:form commandName="member" action="form.dy" method="POST">
+<form:form commandName="member" action="/sample/member/post.dy" method="POST">
 	<p>
 		<label>이름</label>
-		<form:input path="name" size="50"/>
+		<form:input path="name" size="50"/><br>
+		
 		<form:errors path="name" cssClass="smdis-error-message"/>
 	</p>
     <input type="submit" value="저장"/> 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,13 +16,14 @@ import com.sample.domain.Member;
 
 @Controller
 @RequestMapping("/member")
-public class MemberContoroller {
+public class MemberController {
 
 	@Autowired
 	MemberService memberService;
 	
 	@RequestMapping("/list")
 	public String list(Model model) {
+		System.out.println("hello list");
 		model.addAttribute("memberList", memberService.list());
 		return "list";
 	}
@@ -32,15 +34,16 @@ public class MemberContoroller {
 		return "form";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public String formSubmit(@Valid Member member, BindingResult result){
-		System.out.println("3333333");
+	@RequestMapping("/post")
+	public String postSubmit(@Valid Member member, BindingResult result){
+		System.out.println(member.getName());
+		
 		if(result.hasErrors()) {
 			System.out.println("1111111");
-			return "member/form.dy";
+			return "form";
 		}
 		System.out.println("2222222");
 		memberService.add(member);
-		return "redirect:/member/list.dy";
+		return "redirect:list.dy";
 	}
 }

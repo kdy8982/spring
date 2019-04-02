@@ -3,10 +3,7 @@ package MemberDaoIbatis;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-
-import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sample.configcontext.AppContext;
-import com.sample.configcontext.SqlServiceContext;
 import com.sample.domain.Member;
 import com.sample.member.MemberDao;
 
@@ -31,9 +27,9 @@ public class MemberDaoIbatisTest {
 	Member member3;
 	@Before
 	public void setUp() {
-		member1 = new Member("1", "김대연");
-		member2 = new Member("2", "송병욱");
-		member3 = new Member("3", "김보민");
+		member1 = new Member(1, "김대연");
+		member2 = new Member(2, "송병욱");
+		member3 = new Member(3, "김보민");
 	}
 	
 	@Test
@@ -51,7 +47,6 @@ public class MemberDaoIbatisTest {
 		memberDao.add(member3);
 		
 		assertThat(memberDao.getCount(), is(3));
-
 	}
 	
 	@Test
@@ -76,11 +71,12 @@ public class MemberDaoIbatisTest {
 		memberDao.add(member2);
 		memberDao.add(member3);
 		assertThat(memberDao.list().size(), is(3));
-		System.out.println("!!!!!!!!!!!!!!!!!!!!");
 		System.out.println(memberDao.list().get(1).getName());
-//		assertThat(memberDao.list().get(1).getName(),is("김대연"));
-//		assertThat(memberDao.list().get(2).getName(),is("송병욱"));
-//		assertThat(memberDao.list().get(3).getName(),is("김보민"));
+	}
+	
+	@Test
+	public void getCount() {
+		System.out.println(memberDao.getCount());
 	}
 	
 }

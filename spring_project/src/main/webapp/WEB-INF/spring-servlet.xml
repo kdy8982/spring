@@ -11,6 +11,8 @@
 		<context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
 	</context:component-scan> 
 	
+	<mvc:annotation-driven/>
+	
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="mediaTypes">
