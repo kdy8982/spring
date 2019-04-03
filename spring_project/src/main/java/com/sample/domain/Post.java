@@ -21,8 +21,6 @@ public class Post {
 	@Size(min=1, message="게시글 내용을 입력해주세요")
 	String postContent;
 	
-	int memberId;
-
 	
 	public int getPostId() {
 		return postId;
@@ -56,14 +54,5 @@ public class Post {
 		this.postContent = postContent;
 	}
 
-	public int getMemberId() {
-		return memberId;
-	}
-
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
-	}
-	
-	
 	
 }

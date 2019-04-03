@@ -21,7 +21,7 @@
 	</delete>
 
 	<insert id="add" parameterClass="Member">
-		insert into member (id, name, joined) values(#id#, #name#, #joined#)
+		insert into member (memb_id, memb_name, memb_joined) values(#id#, #name#, #joined#)
  	</insert>
  	
 	<update id="update" parameterClass="Member">

@@ -11,34 +11,33 @@
          <result property="postTitle" column="post_title"/>
          <result property="postDatetime" column="post_datetime"/>
          <result property="postContent" column="post_content"/>
-         <result property="memberId" column="memb_id"/>
     </resultMap>
 
 	<delete id="delete" parameterClass="string">
-		delete from member where id = #id#
+		delete from post where id = #id#
 	</delete>
 	
 	<delete id="deleteAll">
-		delete from member
+		delete from post
 	</delete>
 
-	<insert id="add" parameterClass="Member">
-		insert into member (id, name, joined) values(#id#, #name#, #joined#)
+	<insert id="add" parameterClass="Post">
+		insert into post (post_id, post_title, post_datetime, post_content) values(#postId#, #postTitle#, #postDatetime#, #postContent#)
  	</insert>
  	
-	<update id="update" parameterClass="Member">
-		update member set name = #name#, joined = #joined# where id = #id#
+	<update id="update" parameterClass="Post">
+		update post set post_title = #postTitle#, post_content = #postContent# where id = #postId#
 	</update>
  	
-	<select id="get" parameterClass="string" resultClass="Member">
-		select * from member where id = #id#
+	<select id="get" parameterClass="string" resultClass="Post">
+		select * from post where post_id = #postId#
  	</select>
 
 	<select id="list" resultMap="post-list">
-		select * from member
+		select * from post
  	</select>
  	
  	<select id="getCount" resultClass="int">
-		select count(*) from member
+		select count(*) from post
  	</select>
 </sqlMap>

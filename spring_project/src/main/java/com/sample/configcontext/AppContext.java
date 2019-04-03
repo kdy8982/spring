@@ -23,41 +23,9 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 // @ComponentScan(basePackages="com", excludeFilters = @ComponentScan.Filter(type=FilterType.ANNOTATION, value=Controller.class),useDefaultFilters=true)
 @ComponentScan
 @ImportResource("classpath:applicationContext.xml")
+@Import(value = { SqlServiceContext.class })
 @EnableTransactionManagement //  <tx:annotation-driven />
 public class AppContext {
 	
-	@Bean
-	public DataSource embeddedDatabase() {
-		return new EmbeddedDatabaseBuilder()
-				.setName("embeddedDatabase")
-				.addScript("classpath:/script/member_table.sql")
-				.addScript("classpath:/script/post_table.sql")
-				.setType(EmbeddedDatabaseType.HSQL)
-				.build();
-	}
 	
-	@Bean
-	public DataSourceTransactionManager transactionManager() {
-		DataSourceTransactionManager tm = new DataSourceTransactionManager();
-		tm.setDataSource(embeddedDatabase());
-		return tm;
-	}
-
-	@Bean 
-	public SqlMapClientFactoryBean sqlMapClient() {
-		SqlMapClientFactoryBean sqlMapClientFactoryBean = new SqlMapClientFactoryBean();
-		PathMatchingResourcePatternResolver pmrpr = new PathMatchingResourcePatternResolver();
-		
-		sqlMapClientFactoryBean.setDataSource(embeddedDatabase());
-		sqlMapClientFactoryBean.setConfigLocation(pmrpr.getResource("classpath:/SqlMapConfig.xml"));
-		
-		return sqlMapClientFactoryBean;
-	}
-	
-	@Bean
-	public SqlMapClientTemplate sqlMapClientTemplate(SqlMapClient sqlMapClient) {
-		SqlMapClientTemplate sqlMapClientTemplate = new SqlMapClientTemplate();
-		sqlMapClientTemplate.setSqlMapClient(sqlMapClient);
-		return sqlMapClientTemplate;
-	}
 }
