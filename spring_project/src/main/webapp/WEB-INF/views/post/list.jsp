@@ -22,18 +22,17 @@
 			<td>글제목</td>
 			<td>게시일</td>
 		</tr>
+		<c:forEach var="post" items="${postList}">
+		<tr>
+			<td>${post.postId}</td>
+			<td>${post.postTitle}</td>
+			<td>${post.postDatetime}</td>
+		</tr>
+		</c:forEach> 
 	</div>
 </table>
 <br><br>
 
-
-
-<c:forEach var="post" items="${postList}">
-글번호  : ${post.postId} <br>
-글제목 : ${post.postTitle} <br>
-글내용 : ${post.postContent} <br>
-게시일 : ${post.postDatetime} <br><br>
-</c:forEach> 
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

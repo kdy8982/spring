@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="<c:url value='/'/>">홈으로</a>
 	<header>
 		<a href="<c:url value='/member/form.dy'/>">회원가입</a>
 	</header>
