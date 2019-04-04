@@ -14,7 +14,7 @@
 
 
 <div>
-<form:form commandName="member" action="/sample/member/post.dy" method="POST">
+<form:form commandName="member" action="/sample/member/post.do" method="POST">
 	<p>
 		<label>이름</label>
 		<form:input path="name" size="50"/><br>
@@ -26,7 +26,7 @@
 </div>
 
 
-<a href="<c:url value='/member/list.dy'/>">전체 회원 목록</a>
+<a href="<c:url value='/member/list.do'/>">전체 회원 목록</a>
 <jsp:include page="../common/footer.jsp"></jsp:include>
 
 </body>

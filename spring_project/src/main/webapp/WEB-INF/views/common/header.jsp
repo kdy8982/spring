@@ -6,11 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<style>
+.header{background-color:#D5D5D5;text-align:right;}
+</style>
 </head>
 <body>
-	<a href="<c:url value='/'/>">홈으로</a>
-	<header>
-		<a href="<c:url value='/member/form.dy'/>">회원가입</a>
+	<header class="header">
+		<a href="<c:url value='/'/>">홈으로</a>
+		<a href="<c:url value='/member/form.do'/>">회원가입</a>
 	</header>
 </body>
 </html>

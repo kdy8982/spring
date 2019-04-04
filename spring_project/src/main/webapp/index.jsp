@@ -9,8 +9,9 @@
 <title>인덱스</title>
 </head>
 <body>
-<a href="<c:url value='/post/list.dy'/>">자유게시판</a><br>
-<a href="<c:url value='/member/list.dy'/>">회원관리</a>
-
+<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<a href="<c:url value='/post/list.do'/>">자유게시판</a><br>
+<a href="<c:url value='/member/list.do'/>">회원관리</a>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>

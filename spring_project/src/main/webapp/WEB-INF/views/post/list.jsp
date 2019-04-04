@@ -14,7 +14,6 @@
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 
-
 <table border="1">
 	<div>
 		<tr>
@@ -24,9 +23,9 @@
 		</tr>
 		<c:forEach var="post" items="${postList}">
 		<tr>
-			<td>${post.postId}</td>
-			<td>${post.postTitle}</td>
-			<td>${post.postDatetime}</td>
+			<td>${post.id}</td>
+			<td><a href="<c:url value='detail/${post.id}.do'/>"> ${post.title}</a></td>
+			<td>${post.datetime}</td>
 		</tr>
 		</c:forEach> 
 	</div>

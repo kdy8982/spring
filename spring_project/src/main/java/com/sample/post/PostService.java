@@ -8,4 +8,6 @@ public interface PostService {
 
 	List<Post> list();
 
+	Post get(int postId);
+
 }

@@ -19,4 +19,9 @@ public class PostServiceImpl implements PostService {
 		return postDao.list();
 	}
 
+	@Override
+	public Post get(int postId) {
+		return postDao.get(postId);
+	}
+
 }

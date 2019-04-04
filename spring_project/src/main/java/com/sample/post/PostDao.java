@@ -8,4 +8,7 @@ public interface PostDao {
 
 	List<Post> list();
 
+	Post get(int postId);
+
+	int getCount();
 }

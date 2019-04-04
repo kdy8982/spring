@@ -34,7 +34,6 @@ public class MemberDaoIbatis implements MemberDao{
 	@Override
 	public void deleteAll() {
 		sqlMapClientTemplate.delete("Member.deleteAll");
-		
 	}
 
 }

@@ -27,22 +27,20 @@ public class MemberController {
 		return "member/list";
 	}
 	
-	@RequestMapping("/form")
+	@RequestMapping("/form") 
 	public String form(Model model) {
 		model.addAttribute("member", new Member());
 		return "member/form";
 	}
 	
-	@RequestMapping("/post")
+	@RequestMapping("/post") 
 	public String postSubmit(@Valid Member member, BindingResult result){
 		System.out.println(member.getName());
 		
 		if(result.hasErrors()) {
-			System.out.println("1111111");
 			return "member/form";
 		}
-		System.out.println("2222222");
 		memberService.add(member);
-		return "redirect:list.dy";
+		return "redirect:list.do";
 	}
 }

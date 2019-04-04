@@ -43,7 +43,7 @@
 		
 	<servlet-mapping>
 		<servlet-name>sampleSpring</servlet-name>
-		<url-pattern>*.dy</url-pattern>
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
