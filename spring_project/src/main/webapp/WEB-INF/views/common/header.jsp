@@ -16,5 +16,6 @@
 		<a href="<c:url value='/'/>">홈으로</a>
 		<a href="<c:url value='/member/form.do'/>">회원가입</a>
 	</header>
+	<br>
 </body>
 </html>

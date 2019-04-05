@@ -22,7 +22,7 @@
 	</delete>
 
 	<insert id="add" parameterClass="Post">
-		insert into post (post_id, post_title, post_datetime, post_content) values(#id#, #title#, #datetime#, #content#)
+		insert into post (post_title, post_datetime, post_content) values(#title#, #datetime#, #content#)
  	</insert>
  	
 	<update id="update" parameterClass="Post">
@@ -34,7 +34,7 @@
  	</select>
 
 	<select id="list" resultMap="post-list">
-		select * from post
+		select * from post where post_id >=20
  	</select>
  	
  	<select id="getCount" resultClass="int">

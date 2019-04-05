@@ -10,4 +10,6 @@ public interface PostService {
 
 	Post get(int postId);
 
+	void add(Post post);
+
 }

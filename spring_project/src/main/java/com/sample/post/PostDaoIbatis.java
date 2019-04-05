@@ -1,5 +1,6 @@
 package com.sample.post;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +23,10 @@ public class PostDaoIbatis implements PostDao {
 
 	@Override
 	public Post get(int postId) {
-		
 		Post resultPost = (Post) sqlMapClientTemplate.queryForObject("Post.get", postId);
-		
 		if(resultPost == null) {
-			System.out.println("1111111111111111111");
 			return null;
 		}else {
-			System.out.println("2222222222222222222");
-			System.out.println(resultPost.getContent());
 			return resultPost;
 		}
 		
@@ -39,6 +35,13 @@ public class PostDaoIbatis implements PostDao {
 	@Override
 	public int getCount() {
 		return (int) sqlMapClientTemplate.queryForObject("Post.getCount");
+	}
+
+	@Override
+	public void add(Post post) {
+		post.setDatetime(new Date());
+		sqlMapClientTemplate.insert("Post.add", post);
+		
 	}
 	
 	

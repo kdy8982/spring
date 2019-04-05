@@ -11,4 +11,6 @@ public interface PostDao {
 	Post get(int postId);
 
 	int getCount();
+
+	void add(Post post);
 }
