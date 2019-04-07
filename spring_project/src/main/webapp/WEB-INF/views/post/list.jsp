@@ -33,7 +33,9 @@
 	</div>
 </table>
 
-
+<c:forEach var="index" items="${pageIndex}" varStatus="status">
+<a href="<c:url value='list.do?pid=${status.count}'/>">${status.count}</a>
+</c:forEach>
 <a href="<c:url value='form.do'/>">새글쓰기</a></td>
 <br>
 <br>

@@ -8,6 +8,7 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.sample.domain.Post;
+import com.sample.util.PagingCalc;
 
 
 @Repository
@@ -17,8 +18,8 @@ public class PostDaoIbatis implements PostDao {
 	SqlMapClientTemplate sqlMapClientTemplate;
 	
 	@Override
-	public List<Post> list() {
-		return sqlMapClientTemplate.queryForList("Post.list");
+	public List<Post> list(int curPage) {
+		return sqlMapClientTemplate.queryForList("Post.list", new PagingCalc(getCount(), 10, 10, curPage) );
 	}
 
 	@Override
@@ -26,10 +27,9 @@ public class PostDaoIbatis implements PostDao {
 		Post resultPost = (Post) sqlMapClientTemplate.queryForObject("Post.get", postId);
 		if(resultPost == null) {
 			return null;
-		}else {
+		} else {
 			return resultPost;
 		}
-		
 	}
 
 	@Override
@@ -41,9 +41,6 @@ public class PostDaoIbatis implements PostDao {
 	public void add(Post post) {
 		post.setDatetime(new Date());
 		sqlMapClientTemplate.insert("Post.add", post);
-		
 	}
-	
-	
 
 }

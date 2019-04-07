@@ -6,10 +6,12 @@ import com.sample.domain.Post;
 
 public interface PostService {
 
-	List<Post> list();
+	List<Post> list(int curPage);
 
 	Post get(int postId);
 
 	void add(Post post);
+
+	List pageIndex(int curPage);
 
 }

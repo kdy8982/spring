@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sample.domain.Post;
+import com.sample.util.PagingCalc;
 
 
 @Service
@@ -15,8 +16,8 @@ public class PostServiceImpl implements PostService {
 	PostDao postDao;
 	
 	@Override
-	public List<Post> list() {
-		return postDao.list();
+	public List<Post> list(int curPage) {
+		return postDao.list(curPage);
 	}
 
 	@Override
@@ -27,6 +28,12 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public void add(Post post) {
 		postDao.add(post);
+	}
+
+	@Override
+	public List pageIndex(int curPage) {
+		PagingCalc pc = new PagingCalc(postDao.getCount(), 10, 10, curPage);
+		return pc.getIndexArr();
 	}
 
 }

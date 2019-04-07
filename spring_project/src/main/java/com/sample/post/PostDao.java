@@ -6,7 +6,7 @@ import com.sample.domain.Post;
 
 public interface PostDao {
 
-	List<Post> list();
+	List<Post> list(int curPage);
 
 	Post get(int postId);
 

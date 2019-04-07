@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sample.domain.Post;
 
@@ -20,8 +21,9 @@ public class PostController {
 	PostService postService;
 	
 	@RequestMapping("list")
-	public String list(Model model) {
-		model.addAttribute("postList", postService.list());
+	public String list(Model model, @RequestParam(value="pid", defaultValue="1") int curPage ) {
+		model.addAttribute("postList", postService.list(curPage));
+		model.addAttribute("pageIndex",postService.pageIndex(curPage));
 		return "post/list";
 	}
 	

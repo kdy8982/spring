@@ -16,7 +16,7 @@ import com.sample.configcontext.AppContext;
 import com.sample.domain.Member;
 import com.sample.member.MemberDao;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)	
 @ContextConfiguration(classes=AppContext.class)
 public class MemberDaoIbatisTest {
 
