@@ -34,7 +34,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/post") 
-	public String postSubmit(@Valid Member member, BindingResult result){
+	public String postSubmit(@Valid Member member, BindingResult result) {
 		System.out.println(member.getName());
 		
 		if(result.hasErrors()) {
@@ -43,4 +43,5 @@ public class MemberController {
 		memberService.add(member);
 		return "redirect:list.do";
 	}
+	
 }

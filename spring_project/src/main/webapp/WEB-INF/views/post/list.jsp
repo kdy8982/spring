@@ -11,7 +11,7 @@
 <script>
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>자유게시판</title>
+<title>자유게시판11</title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
@@ -19,7 +19,7 @@
 <table border="1">
 	<div>
 		<tr>
-			<td>글번호</td>
+			<td>글번호111</td>
 			<td>글제목</td>
 			<td>게시일</td>
 		</tr>
