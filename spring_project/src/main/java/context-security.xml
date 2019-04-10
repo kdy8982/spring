@@ -17,11 +17,11 @@
 		<security:intercept-url pattern="/**" access="permitAll" />
 		<security:form-login username-parameter="loginId"
 			password-parameter="loginPwd" login-processing-url="/login"
-			login-page="/secu/loginPage"/>
+			login-page="/secu/loginPage.do"/>
 
 
 		<security:access-denied-handler
-			error-page="/access_denied_page" />
+			error-page="/secu/accessDenied.do" />
 
 		<security:logout logout-url="/logout"
 			invalidate-session="true" logout-success-url="/" />

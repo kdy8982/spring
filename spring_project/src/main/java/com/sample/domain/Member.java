@@ -1,11 +1,14 @@
 package com.sample.domain;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -23,6 +26,9 @@ public class Member {
 	
 	@Temporal(TemporalType.DATE)
 	Date joined;
+	
+	Post post;
+	
 	
 	public Member() {
 	}
@@ -51,7 +57,13 @@ public class Member {
 	public void setJoined(Date joined) {
 		this.joined = joined;
 	}
-	
-	
+
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
 
 }

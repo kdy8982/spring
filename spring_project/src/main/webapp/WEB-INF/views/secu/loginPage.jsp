@@ -9,10 +9,8 @@
 </head>
 <body>
 	<br>
-	<br>
 	<div class="container text-center">
-		<h1>Security Prj</h1>
-		<br>
+		<h1>Login</h1>
 	</div>
 	<div class="container col-md-4">
 		<form class="px-4 py-3" action='<c:url value="/login"/>' method="post">

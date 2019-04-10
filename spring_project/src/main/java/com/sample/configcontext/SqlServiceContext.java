@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.ibatis.SqlMapClientFactoryBean;
@@ -31,11 +32,20 @@ public class SqlServiceContext {
 	}
 	
 	@Bean
+	public SimpleDriverDataSource dataSource() {
+		SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+		dataSource.setDriverClass(com.mysql.jdbc.Driver.class);
+		dataSource.setUrl("jdbc:mysql://localhost:3307/spring");
+		dataSource.setUsername("root");
+		dataSource.setPassword("1234");
+		return dataSource;
+	}
+	
+	@Bean
 	public DataSourceTransactionManager transactionManager() {
 		DataSourceTransactionManager tm = new DataSourceTransactionManager();
-		tm.setDataSource(embeddedDatabase());
+		tm.setDataSource(dataSource());
 		return tm;
-		
 	}
 
 	@Bean 
@@ -43,7 +53,7 @@ public class SqlServiceContext {
 		SqlMapClientFactoryBean sqlMapClientFactoryBean = new SqlMapClientFactoryBean();
 		PathMatchingResourcePatternResolver pmrpr = new PathMatchingResourcePatternResolver();
 		
-		sqlMapClientFactoryBean.setDataSource(embeddedDatabase());
+		sqlMapClientFactoryBean.setDataSource(dataSource());
 		sqlMapClientFactoryBean.setConfigLocation(pmrpr.getResource("classpath:/SqlMapConfig.xml"));
 		
 		return sqlMapClientFactoryBean;

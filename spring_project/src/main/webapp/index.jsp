@@ -11,7 +11,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 <a href="<c:url value='/post/list.do'/>">자유게시판</a><br>
-<a href="<c:url value='/member/list.do'/>">회원관리</a>
+<a href="<c:url value='/admin/list.do'/>">회원관리(admin계정만 사용가능)</a>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>

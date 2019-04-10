@@ -11,4 +11,15 @@ public class PageController {
 	public String login() {
 		return "/secu/loginPage";
 	}
+	
+	@RequestMapping("/secu/logout")
+	public String logout() {
+		return "/secu/logout";
+	}
+	
+	@RequestMapping("/secu/accessDenied")
+	public String accessDenied() throws Exception {
+		return "/secu/accessDenied";
+	}
+
 }

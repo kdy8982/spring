@@ -19,15 +19,17 @@
 <table border="1">
 	<div>
 		<tr>
-			<td>글번호111</td>
+			<td>글번호</td>
 			<td>글제목</td>
 			<td>게시일</td>
+			<td>게시자</td>
 		</tr>
 		<c:forEach var="post" items="${postList}">
 		<tr>
 			<td>${post.id}</td>
 			<td><a href="<c:url value='detail/${post.id}.do'/>"> ${post.title}</a></td>
 			<td>${post.datetime}</td>
+			<td>${post.member.id}</td>
 		</tr>
 		</c:forEach> 
 	</div>

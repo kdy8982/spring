@@ -15,25 +15,24 @@ import com.sample.domain.Member;
 
 
 @Controller
-@RequestMapping("/member")
 public class MemberController {
 
 	@Autowired
 	MemberService memberService;
 	
-	@RequestMapping("/list")
+	@RequestMapping("/admin/list")
 	public String list(Model model) {
 		model.addAttribute("memberList", memberService.list());
 		return "member/list";
 	}
 	
-	@RequestMapping("/form") 
+	@RequestMapping("/member/form") 
 	public String form(Model model) {
 		model.addAttribute("member", new Member());
 		return "member/form";
 	}
 	
-	@RequestMapping("/post") 
+	@RequestMapping("/member/post") 
 	public String postSubmit(@Valid Member member, BindingResult result) {
 		System.out.println(member.getName());
 		

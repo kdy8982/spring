@@ -1,11 +1,15 @@
 package com.sample.domain;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,7 +28,8 @@ public class Post {
 	@NotNull
 	@Size(min=1, message="게시글 내용을 입력해주세요")
 	String content;
-
+	
+	Member member;
 	
 	public int getId() {
 		return id;
@@ -56,6 +61,14 @@ public class Post {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
 	}
 	
 	

@@ -5,6 +5,7 @@
 
 <sqlMap namespace="Post">
 	<typeAlias alias="Post" type="com.sample.domain.Post"/>
+	<typeAlias alias="Member" type="com.sample.domain.Member"/>
 	<typeAlias alias="PagingCalc" type="com.sample.util.PagingCalc"/>
 	
 	<resultMap id="post-list" class="com.sample.domain.Post">
@@ -35,7 +36,7 @@
  	</select>
 
 	<select id="list" resultMap="post-list" parameterClass="PagingCalc">
-		select * from post where post_id >= #startPostNum# and post_id  <![CDATA[ <= ]]> #endPostnum#
+		select * from post where post_id >= #startPostNum# and post_id  <![CDATA[ <= ]]> #endPostnum#;
  	</select>
  	
  	<select id="getCount" resultClass="int">
