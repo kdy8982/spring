@@ -21,9 +21,20 @@ public class Member {
 	int id;
 	
 	@NotNull
+	String password;
+	
+	@NotNull
 	@Size(min=1, message = "입력하세요")
 	String name;
 	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Temporal(TemporalType.DATE)
 	Date joined;
 	

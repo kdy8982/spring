@@ -18,8 +18,13 @@
 	<p>
 		<label>이름</label>
 		<form:input path="name" size="50"/><br>
-		
 		<form:errors path="name" cssClass="smdis-error-message"/>
+		
+		
+		<label>비밀번호</label>
+		<form:input path="password" size="50"/><br>
+		<form:errors path="password" cssClass="smdis-error-message"/>
+		
 	</p>
     <input type="submit" value="저장"/> 
 </form:form>

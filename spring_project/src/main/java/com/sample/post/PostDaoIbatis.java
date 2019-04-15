@@ -48,4 +48,10 @@ public class PostDaoIbatis implements PostDao {
 		sqlMapClientTemplate.insert("Post.add", post);
 	}
 
+	@Override
+	public void delete(Post post) {
+		sqlMapClientTemplate.delete("Post.delete", post);
+		
+	}
+
 }

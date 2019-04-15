@@ -10,6 +10,7 @@
          <result property="id" column="memb_id"/>
          <result property="name" column="memb_name"/>
          <result property="joined" column="memb_joined"/>
+         <result property="password" column="memb_password"/>
     </resultMap>
 
 	<delete id="delete" parameterClass="string">
@@ -21,7 +22,7 @@
 	</delete>
 
 	<insert id="add" parameterClass="Member">
-		insert into member (memb_id, memb_name, memb_joined) values(#id#, #name#, #joined#)
+		insert into member (memb_id, memb_name, memb_joined, memb_password) values(#id#, #name#, #joined#, #password#)
  	</insert>
  	
 	<update id="update" parameterClass="Member">

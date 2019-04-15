@@ -3,6 +3,7 @@ package com.sample.member;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,11 +35,13 @@ public class MemberController {
 	
 	@RequestMapping("/member/post") 
 	public String postSubmit(@Valid Member member, BindingResult result) {
-		System.out.println(member.getName());
 		
 		if(result.hasErrors()) {
 			return "member/form";
 		}
+		
+		String hashedPw = BCrypt.hashpw(member.getPassword(), BCrypt.gensalt());
+		member.setPassword(hashedPw);
 		memberService.add(member);
 		return "redirect:list.do";
 	}

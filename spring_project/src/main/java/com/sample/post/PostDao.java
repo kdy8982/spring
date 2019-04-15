@@ -13,4 +13,6 @@ public interface PostDao {
 	int getCount();
 
 	void add(Post post);
+
+	void delete(Post post);
 }

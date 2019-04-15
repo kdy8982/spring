@@ -14,4 +14,6 @@ public interface PostService {
 
 	List pageIndex(int curPage);
 
+	void delete(Post post);
+
 }

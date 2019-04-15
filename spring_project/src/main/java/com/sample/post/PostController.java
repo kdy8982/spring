@@ -20,6 +20,13 @@ public class PostController {
 	@Autowired
 	PostService postService;
 	
+	/*글 목록*/
+	/**
+	 * 게시글 전체 조회(목록)
+	 * @param model
+	 * @param curPage
+	 * @return
+	 */
 	@RequestMapping("list")
 	public String list(Model model, @RequestParam(value="pid", defaultValue="1") int curPage ) {
 		model.addAttribute("postList", postService.list(curPage));
@@ -28,18 +35,36 @@ public class PostController {
 	}
 	
 	
+	/**
+	 * 게시글 하나 조회
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/detail/{id}")
 	public String get(Model model, @PathVariable int id ) {
 		model.addAttribute("post", postService.get(id));
 		return "post/detail";
 	}
 	
+	
+	/**
+	 * 게시글 쓰기 페이지 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/form")
 	public String form(Model model) {
 		model.addAttribute("post", new Post());
 		return "post/form";
 	}
 	
+	/**
+	 * 게시글 쓰기 submit 요청
+	 * @param post
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping("/post")
 	public String formSubmit(@Valid Post post, BindingResult result) {
 		if(result.hasErrors()) {
@@ -48,7 +73,16 @@ public class PostController {
 			postService.add(post);
 			return "redirect:list.do";
 		}
-		
+	}
+	
+	
+	/**
+	 * 게시글 하나 삭제
+	 * @param post
+	 */
+	@RequestMapping("/delete")
+	public void delete(Post post) {
+		postService.delete(post); 
 	}
 
 }

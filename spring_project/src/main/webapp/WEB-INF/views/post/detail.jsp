@@ -32,9 +32,10 @@
 
 		</div>
 	</table>
-
+	<a href="<c:url value='/post/delete.do'/>">글 삭제</a>
 	<a href="<c:url value='/post/list.do'/>">글 목록으로..</a>
-
+	
+	
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

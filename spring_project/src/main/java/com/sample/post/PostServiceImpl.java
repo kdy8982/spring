@@ -36,4 +36,11 @@ public class PostServiceImpl implements PostService {
 		return pc.getIndexArr();
 	}
 
+	@Override
+	public void delete(Post post) {
+		
+		postDao.delete(post);
+		
+	}
+
 }
