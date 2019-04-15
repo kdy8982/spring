@@ -1,5 +1,6 @@
 package com.sample.domain;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -13,6 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Post {
 	
@@ -23,14 +26,37 @@ public class Post {
 	@Size(min=1, message="게시글 제목을 입력해주세요")
 	String title;
 	
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	Date datetime;
 	
 	@NotNull
 	@Size(min=1, message="게시글 내용을 입력해주세요")
 	String content;
 	
-	Member member;
+	@NotNull
+	int memberId;
 	
+	@NotNull
+	String memberName;
+	
+
+	public int getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -63,13 +89,5 @@ public class Post {
 		this.content = content;
 	}
 
-	public Member getMember() {
-		return member;
-	}
-
-	public void setMember(Member member) {
-		this.member = member;
-	}
-	
 	
 }

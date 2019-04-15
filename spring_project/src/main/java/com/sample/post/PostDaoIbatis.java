@@ -1,5 +1,7 @@
 package com.sample.post;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +30,9 @@ public class PostDaoIbatis implements PostDao {
 		if(resultPost == null) {
 			return null;
 		} else {
+			
+			DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
+			System.out.println(df.format(resultPost.getDatetime()));
 			return resultPost;
 		}
 	}

@@ -5,7 +5,6 @@
 
 <sqlMap namespace="Post">
 	<typeAlias alias="Post" type="com.sample.domain.Post"/>
-	<typeAlias alias="Member" type="com.sample.domain.Member"/>
 	<typeAlias alias="PagingCalc" type="com.sample.util.PagingCalc"/>
 	
 	<resultMap id="post-list" class="com.sample.domain.Post">
@@ -13,6 +12,8 @@
          <result property="title" column="post_title"/>
          <result property="datetime" column="post_datetime"/>
          <result property="content" column="post_content"/>
+         <result property="memberId" column="memb_id"></result>
+         <result property="memberName" column="memb_name"></result>
     </resultMap>
 
 	<delete id="delete" parameterClass="string">
@@ -32,11 +33,14 @@
 	</update>
  	
 	<select id="get" parameterClass="int" resultClass="Post" resultMap="post-list">
-		select post_id, post_title, post_datetime, post_content from post where post_id = #id#
+		select post_id, post_title, post_datetime, post_content, memb_id, memb_name from post where post_id = #id#
  	</select>
 
 	<select id="list" resultMap="post-list" parameterClass="PagingCalc">
-		select * from post where post_id >= #startPostNum# and post_id  <![CDATA[ <= ]]> #endPostnum#;
+		select post_id, post_title, post_datetime, post_content, memb_id, memb_name 
+		from spring.post 
+		where post_id
+		between #startPostNum# and #endPostnum#
  	</select>
  	
  	<select id="getCount" resultClass="int">

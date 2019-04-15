@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page import="java.util.*" %>
 <%@ page import="com.sample.domain.*" %>
 <%@ page import="com.sample.util.*" %>
@@ -28,8 +29,8 @@
 		<tr>
 			<td>${post.id}</td>
 			<td><a href="<c:url value='detail/${post.id}.do'/>"> ${post.title}</a></td>
-			<td>${post.datetime}</td>
-			<td>${post.member.id}</td>
+			<td><spring:eval expression="post.datetime"/></td>
+			<td>${post.memberName}</td>
 		</tr>
 		</c:forEach> 
 	</div>
