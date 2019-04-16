@@ -1,5 +1,6 @@
 package com.sample.interceptor;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,6 +27,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			logger.info("new login success");
 			httpSession.setAttribute(LOGIN, member);
 			response.sendRedirect("/sample");
+			
+			if(request.getParameter("userCookie") != null) {
+				logger.info("remmeber me...");
+				Cookie loginCookie = new Cookie("loginCookie", httpSession.getId());
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(60*60*24*7);
+				response.addCookie(loginCookie);
+			}
 		}
 	}
 

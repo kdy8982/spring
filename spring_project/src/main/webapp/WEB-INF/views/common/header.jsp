@@ -18,7 +18,9 @@
 <body>
 	<header class="header">
 		<a href="<c:url value='/'/>">홈으로</a>
-		<a href="<c:url value='/member/login.do'/>">로그인</a>
+		<%-- <c:if test ="${not empty login }"> --%>
+			<a href="<c:url value='/member/login.do'/>">로그인</a>
+		<%-- </c:if> --%>
 		<a href="<c:url value='/member/form.do'/>">회원가입</a>
 	</header>
 	<br>

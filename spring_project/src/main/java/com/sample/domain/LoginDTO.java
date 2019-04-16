@@ -1,14 +1,14 @@
 package com.sample.domain;
 
 public class LoginDTO {
-	private String memberId;
+	private String memberEmail;
 	private String memberPw;
 	private boolean useCookie;
-	public String getMemberId() {
-		return memberId;
+	public String getMemberEmail() {
+		return memberEmail;
 	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
 	}
 	public String getMemberPw() {
 		return memberPw;

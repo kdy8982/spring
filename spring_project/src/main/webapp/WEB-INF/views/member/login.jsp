@@ -12,13 +12,16 @@
 	<p class="login-box-msg">로그인 페이지</p>
 
 	<form action="/sample/member/loginPost.do" method="post">
-		<label>아이디</label> 
-		<input type="text" name="memberId" placeholder="아이디" size="50" /> <br> 
+		<label>이메일</label> 
+		<input type="text" name="memberEmail" placeholder="이메일" size="50" /> <br> 
 		
 		<label>비밀번호</label>
 		<input type="password" name="memberPw" placeholder="비밀번호" size="50" />               
-		<button type="submit">로그인</button>
+		<button type="submit">로그인</button> <br>
+		
+		<input type="checkbox" name="userCookie">로그인 유지</input>
 
+		
 	</form>
 </body>
 </html>

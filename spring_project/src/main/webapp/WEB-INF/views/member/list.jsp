@@ -17,7 +17,9 @@
 <c:forEach var="member" items="${memberList}">
 회원 번호 : ${member.id} <br>
 회원 이름 : ${member.name} <br>
-가입일 : ${member.joined} <br><br>
+가입일 : ${member.joined} <br>
+이메일 : ${member.email} <br><br>
+
 </c:forEach> 
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>

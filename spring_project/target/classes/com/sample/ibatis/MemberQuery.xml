@@ -11,6 +11,7 @@
 		<result property="name" column="memb_name" />
 		<result property="joined" column="memb_joined" />
 		<result property="password" column="memb_password" />
+		<result property="email" column="memb_email" />
 	</resultMap>
 
 	
@@ -26,8 +27,8 @@
 
 	<insert id="add" parameterClass="Member">
 		insert into member (memb_id,
-		memb_name, memb_joined, memb_password) values(#id#, #name#, #joined#,
-		#password#)
+		memb_name, memb_joined, memb_password, memb_email) values(#id#, #name#, #joined#,
+		#password#, #email#)
 	</insert>
 
 	<update id="update" parameterClass="Member">
@@ -49,6 +50,6 @@
 	</select>
 
 	<select id="login" parameterClass="com.sample.domain.LoginDTO" resultMap="member-list" >
-		select * from spring.member where memb_id = #memberId#
+		select * from spring.member where memb_email = #memberEmail#
 	</select>
 </sqlMap>

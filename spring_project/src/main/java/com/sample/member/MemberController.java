@@ -2,6 +2,9 @@ package com.sample.member;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -13,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.util.WebUtils;
 
 import com.sample.domain.LoginDTO;
 import com.sample.domain.Member;
@@ -73,6 +77,26 @@ public class MemberController {
 			return;
 		}
 		model.addAttribute("member", member);
+	}
+	
+	
+	@RequestMapping(value="/member/logout",method=RequestMethod.GET)
+	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession httpSession) {
+		Object object = httpSession.getAttribute("login");
+		if(object != null) {
+			Member member = (Member) object;
+			httpSession.removeAttribute("login");
+			httpSession.invalidate();
+			
+			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			if(loginCookie != null) {
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(0);
+				response.addCookie(loginCookie);
+			}
+		}
+		
+		return "member/logout";
 	}
 	
 }

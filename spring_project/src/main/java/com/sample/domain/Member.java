@@ -27,6 +27,16 @@ public class Member {
 	@Size(min=1, message = "입력하세요")
 	String name;
 	
+	String email;
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getPassword() {
 		return password;
 	}
