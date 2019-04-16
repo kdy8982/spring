@@ -26,7 +26,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		if (member != null) {
 			logger.info("new login success");
 			httpSession.setAttribute(LOGIN, member);
-			response.sendRedirect("/sample");
+			// response.sendRedirect("/sample");
 			
 			if(request.getParameter("userCookie") != null) {
 				logger.info("remmeber me...");
@@ -35,6 +35,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				loginCookie.setMaxAge(60*60*24*7);
 				response.addCookie(loginCookie);
 			}
+			Object destination = httpSession.getAttribute("destination");
+			response.sendRedirect(destination != null ?(String) destination : "/sample");
 		}
 	}
 
