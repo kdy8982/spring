@@ -31,6 +31,7 @@ public class PostController {
 	public String list(Model model, @RequestParam(value="pid", defaultValue="1") int curPage ) {
 		model.addAttribute("postList", postService.list(curPage));
 		model.addAttribute("pageIndex",postService.pageIndex(curPage));
+		System.out.println("zzzzzzzzzz");
 		return "post/list";
 	}
 	

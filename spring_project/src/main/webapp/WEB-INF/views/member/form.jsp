@@ -31,7 +31,7 @@
 </div>
 
 
-<a href="<c:url value='/member/list.do'/>">전체 회원 목록</a>
+<a href="<c:url value='/admin/list.do'/>">전체 회원 목록</a>
 <jsp:include page="../common/footer.jsp"></jsp:include>
 
 </body>

@@ -1,5 +1,8 @@
 package com.sample.member;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sample.domain.LoginDTO;
 import com.sample.domain.Member;
 
 
@@ -44,6 +48,31 @@ public class MemberController {
 		member.setPassword(hashedPw);
 		memberService.add(member);
 		return "redirect:list.do";
+	}
+	
+	
+	/**
+	 * 로그인페이지 호출
+	 * @return
+	 */
+	@RequestMapping("/member/login") 
+	public String login() {
+		return "member/login";
+	}
+	
+	
+	/**
+	 * 로그인 버튼 클릭
+	 * @throws Exception 
+	 */
+	@RequestMapping(value = "/member/loginPost", method=RequestMethod.POST) 
+	public void loginPost(LoginDTO loginDTO, HttpSession httpSession, Model model) throws Exception {
+		Member member = memberService.login(loginDTO);
+		
+		if(member == null || !BCrypt.checkpw(loginDTO.getMemberPw(), member.getPassword())) { // 비밀번호 체크(서버에서는 id만 검증한다)
+			return;
+		}
+		model.addAttribute("member", member);
 	}
 	
 }

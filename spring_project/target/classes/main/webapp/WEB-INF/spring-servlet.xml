@@ -38,5 +38,14 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="loginInterceptor" class="com.sample.interceptor.LoginInterceptor" />
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<ref bean = "loginInterceptor"/> 		
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>
 

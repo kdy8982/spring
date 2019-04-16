@@ -7,6 +7,7 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import com.sample.domain.LoginDTO;
 import com.sample.domain.Member;
 
 @Repository
@@ -34,6 +35,11 @@ public class MemberDaoIbatis implements MemberDao{
 	@Override
 	public void deleteAll() {
 		sqlMapClientTemplate.delete("Member.deleteAll");
+	}
+
+	@Override
+	public Member login(LoginDTO loginDTO) {
+		return (Member) sqlMapClientTemplate.queryForObject("Member.login", loginDTO);
 	}
 
 }

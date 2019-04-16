@@ -7,37 +7,48 @@
 	<typeAlias alias="Member" type="com.sample.domain.Member" />
 	
 	<resultMap id="member-list" class="com.sample.domain.Member">
-         <result property="id" column="memb_id"/>
-         <result property="name" column="memb_name"/>
-         <result property="joined" column="memb_joined"/>
-         <result property="password" column="memb_password"/>
-    </resultMap>
+		<result property="id" column="memb_id" />
+		<result property="name" column="memb_name" />
+		<result property="joined" column="memb_joined" />
+		<result property="password" column="memb_password" />
+	</resultMap>
+
+	
 
 	<delete id="delete" parameterClass="string">
-		delete from member where id = #id#
+		delete from member where id =
+		#id#
 	</delete>
-	
+
 	<delete id="deleteAll">
 		delete from member
 	</delete>
 
 	<insert id="add" parameterClass="Member">
-		insert into member (memb_id, memb_name, memb_joined, memb_password) values(#id#, #name#, #joined#, #password#)
- 	</insert>
- 	
+		insert into member (memb_id,
+		memb_name, memb_joined, memb_password) values(#id#, #name#, #joined#,
+		#password#)
+	</insert>
+
 	<update id="update" parameterClass="Member">
-		update member set name = #name#, joined = #joined# where id = #id#
+		update member set name =
+		#name#, joined = #joined# where id = #id#
 	</update>
- 	
+
 	<select id="get" parameterClass="string" resultClass="Member">
-		select * from member where id = #id#
- 	</select>
+		select *
+		from member where id = #id#
+	</select>
 
 	<select id="list" resultMap="member-list">
 		select * from member
- 	</select>
- 	
- 	<select id="getCount" resultClass="int">
+	</select>
+
+	<select id="getCount" resultClass="int">
 		select count(*) from member
- 	</select>
+	</select>
+
+	<select id="login" parameterClass="com.sample.domain.LoginDTO" resultMap="member-list" >
+		select * from spring.member where memb_id = #memberId#
+	</select>
 </sqlMap>

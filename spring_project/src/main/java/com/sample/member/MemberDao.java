@@ -2,6 +2,7 @@ package com.sample.member;
 
 import java.util.List;
 
+import com.sample.domain.LoginDTO;
 import com.sample.domain.Member;
 
 public interface MemberDao {	
@@ -10,6 +11,7 @@ public interface MemberDao {
 	List<Member> list();
 	int getCount();
 	void deleteAll();
+	Member login(LoginDTO loginDTO);
 	
 	
 }

@@ -18,8 +18,17 @@
 <body>
 	<header class="header">
 		<a href="<c:url value='/'/>">홈으로</a>
-		<a href="<c:url value='/member/login.do'/>">로그인</a>
 		<a href="<c:url value='/member/form.do'/>">회원가입</a>
+		<sec:authorize access="isAnonymous()">		
+		<a href="<c:url value='/secu/loginPage.do'/>">로그인</a>
+		</sec:authorize>
+		<sec:authorize access="isAuthenticated()">
+			<sec:authentication property="principal.username"/>님, 반갑습니다.
+				        <form action='<c:url value="/secu/logout.do"/>' method="POST">
+	                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	                <button type="submit" class="btn btn-dark btn-sm">LOGOUT</button>
+	        </form>
+		</sec:authorize>
 	</header>
 	<br>
 </body>
