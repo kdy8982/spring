@@ -20,6 +20,8 @@
 		<a href="<c:url value='/'/>">홈으로</a>
 		<%-- <c:if test ="${not empty login }"> --%>
 			<a href="<c:url value='/member/login.do'/>">로그인</a>
+			
+			<a href="<c:url value='/member/logout.do'/>">로그아웃</a>
 		<%-- </c:if> --%>
 		<a href="<c:url value='/member/form.do'/>">회원가입</a>
 	</header>

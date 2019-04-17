@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>
 	alert("로그아웃 되었습니다.");
-	self.location = "/sample/member/login.do";
+	self.location = "/sample";
 </script>
 <title>로그아웃</title>
 </head>

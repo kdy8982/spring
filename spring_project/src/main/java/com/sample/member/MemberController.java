@@ -80,6 +80,13 @@ public class MemberController {
 	}
 	
 	
+	/**
+	 * 로그아웃 버튼 클릭
+	 * @param request
+	 * @param response
+	 * @param httpSession
+	 * @return
+	 */
 	@RequestMapping(value="/member/logout",method=RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession httpSession) {
 		Object object = httpSession.getAttribute("login");

@@ -24,12 +24,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		Object member = modelMap.get("member");
 		
 		if (member != null) {
-			logger.info("new login success");
+			logger.info("새로운 로그인이 성공하였습니다");
 			httpSession.setAttribute(LOGIN, member);
 			// response.sendRedirect("/sample");
 			
 			if(request.getParameter("userCookie") != null) {
-				logger.info("remmeber me...");
+				logger.info("쿠키를 생성하였습니다.");
 				Cookie loginCookie = new Cookie("loginCookie", httpSession.getId());
 				loginCookie.setPath("/");
 				loginCookie.setMaxAge(60*60*24*7);

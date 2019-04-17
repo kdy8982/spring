@@ -43,9 +43,21 @@
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
+			<mvc:mapping path="/member/loginPost.do"/>
 			<ref bean = "loginInterceptor"/> 		
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	
+	<bean id="AuthInterceptor" class="com.sample.interceptor.AuthInterceptor" />
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/member/logout.do"/>
+			<mvc:mapping path="/admin/list.do"/>
+			<ref bean = "AuthInterceptor"/> 		
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 </beans>
 
